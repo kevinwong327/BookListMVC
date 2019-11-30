@@ -31,3 +31,4 @@ C:\Users\meowt\OneDrive\Desktop\Dev\BookListMVC\BookListMVC\obj\Debug\netcoreapp
 C:\Users\meowt\OneDrive\Desktop\Dev\BookListMVC\BookListMVC\obj\Debug\netcoreapp2.2\BookListMVC.pdb
 C:\Users\meowt\OneDrive\Desktop\Dev\BookListMVC\BookListMVC\obj\Debug\netcoreapp2.2\BookListMVC.csproj.CopyComplete
 C:\Users\meowt\OneDrive\Desktop\Dev\BookListMVC\BookListMVC\obj\Debug\netcoreapp2.2\Razor\Views\Books\Index.cshtml.g.cs
+C:\Users\meowt\OneDrive\Desktop\Dev\BookListMVC\BookListMVC\obj\Debug\netcoreapp2.2\Razor\Views\Books\Create.cshtml.g.cs
