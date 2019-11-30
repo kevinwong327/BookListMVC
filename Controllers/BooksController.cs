@@ -21,5 +21,11 @@ namespace BookListMVC.Controllers
         {
             return View(_db.Books.ToList());
         }
+
+        //GET Book/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }
