@@ -27,5 +27,18 @@ namespace BookListMVC.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Book book)
+        {
+            if(ModelState.IsValid)
+            {
+                _db.Add(book);
+                await _db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(book);
+        }
     }
 }
