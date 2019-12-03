@@ -33,7 +33,7 @@ namespace BookListMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Book book)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _db.Add(book);
                 await _db.SaveChangesAsync();
@@ -45,14 +45,14 @@ namespace BookListMVC.Controllers
         //GET EDIT BOOK
         public async Task<IActionResult> Edit(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
             var book = await _db.Books.SingleOrDefaultAsync(m => m.Id == id);
 
-            if (book==null)
+            if (book == null)
             {
                 return NotFound();
             }
@@ -64,7 +64,7 @@ namespace BookListMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Book book)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 //_db.Update(book);
 
@@ -78,6 +78,35 @@ namespace BookListMVC.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(book);
+        }
+
+
+        //GET DELETE BOOK
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var book = await _db.Books.SingleOrDefaultAsync(m => m.Id == id);
+
+            if (book == null)
+            {
+                return NotFound();
+            }
+            return View(book);
+        }
+
+        //Delete POST
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RemoveBook(int? id)
+        {
+            var book = await _db.Books.SingleOrDefaultAsync(m => m.Id == id);
+            _db.Books.Remove(book);
+            await _db.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
     }
 }
