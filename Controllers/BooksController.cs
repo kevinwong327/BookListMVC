@@ -58,5 +58,26 @@ namespace BookListMVC.Controllers
             }
             return View(book);
         }
+
+        //EDIT POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(Book book)
+        {
+            if(ModelState.IsValid)
+            {
+                //_db.Update(book);
+
+                var BookFromDb = await _db.Books.FirstOrDefaultAsync(b => b.Id == book.Id);
+                BookFromDb.Name = book.Name;
+                BookFromDb.Author = book.Author;
+                BookFromDb.Price = book.Price;
+
+
+                await _db.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(book);
+        }
     }
 }
