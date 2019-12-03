@@ -15,7 +15,10 @@ namespace BookListMVC.Models
         [Required]
         public string Name{ get; set; }
         public string Author { get; set; }
-        public string Price { get; set; }
+
+        [DataType(DataType.Currency)]
+        [Range(0.01,100.00, ErrorMessage="Price {0} must be between {1} and {2}")]  
+        public double Price { get; set; }
 
     }
 }
